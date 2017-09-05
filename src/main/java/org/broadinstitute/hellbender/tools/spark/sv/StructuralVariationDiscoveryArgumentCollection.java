@@ -90,12 +90,18 @@ public class StructuralVariationDiscoveryArgumentCollection implements Serializa
         @Argument(doc = "Don't look for extra reads mapped outside the interval.", fullName = "intervalOnlyAssembly")
         public boolean intervalOnlyAssembly = false;
 
+        @Argument(doc = "Weight to give external evidence.", fullName = "externalEvidenceWeight")
+        public int externalEvidenceWeight = 10;
+
         // --------- locations ----------
 
         @Argument(doc = "bwa-mem index image file", fullName = "alignerIndexImage")
         public String alignerIndexImageFile;
 
-        @Argument(doc = "file for read metadata", fullName = "readMetadata", optional = true)
+        @Argument(doc = "external evidence input file", fullName = "externalEvidence", optional = true)
+        public String externalEvidenceFile;
+
+        @Argument(doc = "output file for read metadata", fullName = "readMetadata", optional = true)
         public String metadataFile;
 
         @Argument(doc = "directory for evidence output", fullName = "breakpointEvidenceDir", optional = true)
