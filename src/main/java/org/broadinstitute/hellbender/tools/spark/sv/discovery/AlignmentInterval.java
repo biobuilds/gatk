@@ -370,6 +370,9 @@ public final class AlignmentInterval {
                                  final Collection<? extends SAMRecord.SAMTagAndValue> otherAttributes) {
         Utils.nonNull(header, "the input header cannot be null");
         final SAMRecord result = new SAMRecord(header);
+        if (hardClip && !SAMFlag.NOT_PRIMARY_ALIGNMENT.isSet(otherFlags)) {
+            throw new IllegalArgumentException("you cannot request hard-clipping on a primary alignment record");
+        }
 
         result.setReadName(name);
         result.setFlags(otherFlags);
